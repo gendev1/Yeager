@@ -20,8 +20,8 @@ module.exports = async (env, options) => {
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       vendor: ["react", "react-dom", "core-js", "@fluentui/react"],
-      taskpane: ["react-hot-loader/patch", "./src/taskpane/index.js", "./src/taskpane/taskpane.html"],
-      commands: "./src/commands/commands.js",
+      taskpane: ["react-hot-loader/patch", "./src/taskpane/index.tsx", "./src/taskpane/taskpane.html"],
+      commands: "./src/commands/commands.ts",
     },
     output: {
       clean: true,
@@ -32,17 +32,19 @@ module.exports = async (env, options) => {
     module: {
       rules: [
         {
-          test: /\.jsx?$/,
-          use: [
-            "react-hot-loader/webpack",
-            {
-              loader: "babel-loader",
-              options: {
-                presets: ["@babel/preset-env"],
-              },
-            },
-          ],
+          test: /\.ts$/,
           exclude: /node_modules/,
+          use: {
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/preset-typescript"],
+            },
+          },
+        },
+        {
+          test: /\.tsx?$/,
+          exclude: /node_modules/,
+          use: ["react-hot-loader/webpack", "ts-loader"],
         },
         {
           test: /\.html$/,
@@ -81,7 +83,7 @@ module.exports = async (env, options) => {
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
         template: "./src/taskpane/taskpane.html",
-        chunks: ["taskpane", "vendor", "polyfill"],
+        chunks: ["taskpane", "vendor", "polyfills"],
       }),
       new HtmlWebpackPlugin({
         filename: "commands.html",

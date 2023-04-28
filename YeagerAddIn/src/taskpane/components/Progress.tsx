@@ -1,8 +1,13 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import { Spinner, SpinnerSize } from "@fluentui/react";
 
-export default class Progress extends React.Component {
+export interface ProgressProps {
+  logo: string;
+  message: string;
+  title: string;
+}
+
+export default class Progress extends React.Component<ProgressProps> {
   render() {
     const { logo, message, title } = this.props;
 
@@ -15,9 +20,3 @@ export default class Progress extends React.Component {
     );
   }
 }
-
-Progress.propTypes = {
-  logo: PropTypes.string,
-  message: PropTypes.string,
-  title: PropTypes.string,
-};

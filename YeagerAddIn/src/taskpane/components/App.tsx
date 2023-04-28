@@ -1,13 +1,21 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import { DefaultButton } from "@fluentui/react";
 import Header from "./Header";
-import HeroList from "./HeroList";
+import HeroList, { HeroListItem } from "./HeroList";
 import Progress from "./Progress";
 
-/* global console, Excel, require */
+/* global console, Excel, require  */
 
-export default class App extends React.Component {
+export interface AppProps {
+  title: string;
+  isOfficeInitialized: boolean;
+}
+
+export interface AppState {
+  listItems: HeroListItem[];
+}
+
+export default class App extends React.Component<AppProps, AppState> {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -84,8 +92,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-App.propTypes = {
-  title: PropTypes.string,
-  isOfficeInitialized: PropTypes.bool,
-};

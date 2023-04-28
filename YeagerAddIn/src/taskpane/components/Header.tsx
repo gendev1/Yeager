@@ -1,7 +1,12 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 
-export default class Header extends React.Component {
+export interface HeaderProps {
+  title: string;
+  logo: string;
+  message: string;
+}
+
+export default class Header extends React.Component<HeaderProps> {
   render() {
     const { title, logo, message } = this.props;
 
@@ -13,9 +18,3 @@ export default class Header extends React.Component {
     );
   }
 }
-
-Header.propTypes = {
-  title: PropTypes.string,
-  logo: PropTypes.string,
-  message: PropTypes.string,
-};
