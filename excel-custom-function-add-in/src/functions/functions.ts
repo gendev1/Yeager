@@ -1,11 +1,12 @@
-﻿/**
+﻿/* global clearInterval, console, setInterval, fetch , Headers, Buffer */
+
+/**
  * Adds two numbers.
  * @customfunction
  * @param first First number
  * @param second Second number
  * @returns The sum of the two numbers.
  */
-/* global clearInterval, console, setInterval */
 export function add(first: number, second: number): number {
   return first + second + 1;
 }
@@ -82,23 +83,20 @@ export function logMessages(message: string): string {
  * @param walletAddress String to write.
  * @param chainId String to write.
  * @param apiKey String to write.
- * @returns List of token balances.
+ * @returns String to write.
  */
-export function getBalances(walletAddress: string, chainId: string, apiKey: string): Promise<string> {
-  const url = `https://api.covalenthq.com/v1/${chainId}/address/${walletAddress}/balances_v2/?key=${apiKey}`;
+export function getBalances(address: string): string {
+  const covalentApiUrl = "https://api.covalenthq.com/v1/eth-mainnet/address";
+  const apiKey = "cqt_rQxfQCjVyFxFb4RW8VGhHg7f4dy7";
 
-  // eslint-disable-next-line no-undef
-  return new Promise((resolve, reject) => {
-    // eslint-disable-next-line no-undef
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        const balances = data.data.items;
-        const result = JSON.stringify(balances);
-        resolve(result);
-      })
-      .catch(error => {
-        reject(error);
-      });
-  });
+  let headers = new Headers();
+  headers.set("Authorization", "Basic " + new Buffer(apiKey).toString("base64"));
+
+  fetch(`${covalentApiUrl}/${address}/balances_v2/`, {
+    method: "GET",
+    headers: headers
+  })
+    .then(resp => resp.json())
+    .then(data => console.log(data));
+  return "data retrieved";
 }
