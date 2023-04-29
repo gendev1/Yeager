@@ -2,6 +2,7 @@
 
 const devCerts = require("office-addin-dev-certs");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CustomFunctionsMetadataPlugin = require("custom-functions-metadata-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 
@@ -18,10 +19,11 @@ module.exports = async (env, options) => {
   const config = {
     devtool: "source-map",
     entry: {
+      functions: "./src/functions/functions.js",
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       vendor: ["react", "react-dom", "core-js", "@fluentui/react"],
-      taskpane: ["react-hot-loader/patch", "./src/taskpane/index.tsx", "./src/taskpane/taskpane.html"],
-      commands: "./src/commands/commands.ts",
+      taskpane: ["react-hot-loader/patch", "./src/taskpane/index.js", "./src/taskpane/taskpane.html"],
+      commands: "./src/commands/commands.js",
     },
     output: {
       clean: true,
@@ -32,19 +34,17 @@ module.exports = async (env, options) => {
     module: {
       rules: [
         {
-          test: /\.ts$/,
-          exclude: /node_modules/,
-          use: {
-            loader: "babel-loader",
-            options: {
-              presets: ["@babel/preset-typescript"],
+          test: /\.jsx?$/,
+          use: [
+            "react-hot-loader/webpack",
+            {
+              loader: "babel-loader",
+              options: {
+                presets: ["@babel/preset-env"],
+              },
             },
-          },
-        },
-        {
-          test: /\.tsx?$/,
+          ],
           exclude: /node_modules/,
-          use: ["react-hot-loader/webpack", "ts-loader"],
         },
         {
           test: /\.html$/,
@@ -61,6 +61,15 @@ module.exports = async (env, options) => {
       ],
     },
     plugins: [
+      new HtmlWebpackPlugin({
+        filename: "functions.html",
+        template: "./src/functions/functions.html",
+        chunks: ["polyfill", "functions"],
+      }),
+      new CustomFunctionsMetadataPlugin({
+        output: "functions.json",
+        input: "./src/functions/functions.js",
+      }),
       new CopyWebpackPlugin({
         patterns: [
           {
@@ -83,7 +92,7 @@ module.exports = async (env, options) => {
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
         template: "./src/taskpane/taskpane.html",
-        chunks: ["taskpane", "vendor", "polyfills"],
+        chunks: ["taskpane", "vendor", "polyfill"],
       }),
       new HtmlWebpackPlugin({
         filename: "commands.html",

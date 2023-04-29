@@ -1,0 +1,89 @@
+{
+    "functions": [
+        {
+            "description": "Adds two numbers.",
+            "id": "ADD",
+            "name": "ADD",
+            "parameters": [
+                {
+                    "description": "First number",
+                    "name": "first",
+                    "type": "any"
+                },
+                {
+                    "description": "Second number",
+                    "name": "second",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Displays the current time once a second.",
+            "id": "CLOCK",
+            "name": "CLOCK",
+            "parameters": [
+                {
+                    "description": "Custom function handler",
+                    "name": "invocation",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Increments a value once a second.",
+            "id": "INCREMENT",
+            "name": "INCREMENT",
+            "parameters": [
+                {
+                    "description": "Amount to increment",
+                    "name": "incrementBy",
+                    "type": "any"
+                },
+                {
+                    "description": "Custom function handler",
+                    "name": "invocation",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Writes a message to console.log().",
+            "id": "LOG",
+            "name": "LOG",
+            "parameters": [
+                {
+                    "description": "String to write.",
+                    "name": "message",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Unpivots a range of cells.",
+            "id": "UNPIVOT",
+            "name": "UNPIVOT",
+            "parameters": [
+                {
+                    "description": "The range of cells that represent your headers.",
+                    "name": "headers",
+                    "type": "any"
+                },
+                {
+                    "description": "The range of cells that represent your row headers.",
+                    "name": "rows",
+                    "type": "any"
+                },
+                {
+                    "description": "The range of cells that represent your range of values.",
+                    "name": "values",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        }
+    ]
+}
