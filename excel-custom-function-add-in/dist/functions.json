@@ -1,0 +1,163 @@
+{
+    "functions": [
+        {
+            "description": "Adds two numbers.",
+            "id": "ADD",
+            "name": "ADD",
+            "parameters": [
+                {
+                    "description": "First number",
+                    "name": "first",
+                    "type": "number"
+                },
+                {
+                    "description": "Second number",
+                    "name": "second",
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Displays the current time once a second.",
+            "id": "CLOCK",
+            "name": "CLOCK",
+            "options": {
+                "stream": true
+            },
+            "parameters": [],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Increments a value once a second.",
+            "id": "INCREMENT",
+            "name": "INCREMENT",
+            "options": {
+                "stream": true
+            },
+            "parameters": [
+                {
+                    "description": "Amount to increment",
+                    "name": "incrementBy",
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Writes a message to console.log().",
+            "id": "LOG",
+            "name": "LOG",
+            "parameters": [
+                {
+                    "description": "String to write.",
+                    "name": "message",
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Writes a message to console.log().",
+            "id": "LOG1",
+            "name": "LOG1",
+            "parameters": [
+                {
+                    "description": "String to write.",
+                    "name": "message",
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Get balances of all tokens in a wallet. using covalent api",
+            "id": "GETBALANCES",
+            "name": "GETBALANCES",
+            "parameters": [
+                {
+                    "description": "String to write.",
+                    "name": "address",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Get balances of all tokens in a wallet. using covalent api",
+            "id": "CONNECTTOMETAMASKSS",
+            "name": "CONNECTTOMETAMASKSS",
+            "parameters": [],
+            "result": {}
+        },
+        {
+            "description": "Get Balance of a erc20 token",
+            "id": "GETERC20BALANCE",
+            "name": "GETERC20BALANCE",
+            "parameters": [
+                {
+                    "description": "address of the token",
+                    "name": "tknAddr",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Approve a erc20 token",
+            "id": "APPROVEERC20",
+            "name": "APPROVEERC20",
+            "parameters": [
+                {
+                    "description": "address of the token",
+                    "name": "tknAddr",
+                    "type": "any"
+                },
+                {
+                    "description": "address of the spender",
+                    "name": "spender",
+                    "type": "any"
+                },
+                {
+                    "description": "amount to approve",
+                    "name": "amount",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Transfer a erc20 token",
+            "id": "TRANSFERERC20",
+            "name": "TRANSFERERC20",
+            "parameters": [
+                {
+                    "description": "address of the token",
+                    "name": "tknAddr",
+                    "type": "any"
+                },
+                {
+                    "description": "address of the receiver",
+                    "name": "to",
+                    "type": "any"
+                },
+                {
+                    "description": "amount to transfer",
+                    "name": "amount",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        }
+    ]
+}
