@@ -193,46 +193,46 @@ export async function transferERC20(tknAddr, to, amount) {
   return tx.hash;
 }
 
-// // AAVE Functions
+// AAVE Functions
 
-// async function getHealthAndCollateralData(aaveContractAddress: string) {
-//   if (typeof signer === "undefined") {
-//     console.log("Signer is undefined.");
-//     connectToMetaMask();
-//     // throw new Error("Please connect to MetaMask first.");
-//   }
-//   console.log("Signer is defined.");
-//   const aaveContract = new ethers.Contract(aaveContractAddress, aavePool, signer);
-//   const data = await aaveContract.getUserAccountData(signer.getAddress());
-//   console.log(data);
+async function getHealthAndCollateralData(aaveContractAddress: string) {
+  if (typeof signer === "undefined") {
+    console.log("Signer is undefined.");
+    connectToMetaMask();
+    // throw new Error("Please connect to MetaMask first.");
+  }
+  console.log("Signer is defined.");
+  const aaveContract = new ethers.Contract(aaveContractAddress, aavePool, signer);
+  const data = await aaveContract.getUserAccountData(signer.getAddress());
+  console.log(data);
 
-//   return {
-//     totalCollateralETH: data.totalCollateralETH,
-//     totalDebtBase: data.totalDebtBase,
-//     availableBorrowsBase: data.availableBorrowsBase,
-//     currentLiquidationThreshold: data.currentLiquidationThreshold,
-//     ltv: data.ltv,
-//     healthFactor: data.healthFactor
-//   };
-// }
+  return {
+    totalCollateralETH: data.totalCollateralETH,
+    totalDebtBase: data.totalDebtBase,
+    availableBorrowsBase: data.availableBorrowsBase,
+    currentLiquidationThreshold: data.currentLiquidationThreshold,
+    ltv: data.ltv,
+    healthFactor: data.healthFactor
+  };
+}
 
-// /**
-//  * Retrieves health and collateral data for a user from Aave.
-//  * @customfunction GET_AAVE_DATA
-//  * @param userAddress Ethereum address of the user.
-//  * @returns A 2D array containing headings and values.
-//  */
-// export async function getAaveData(userAddress: string) {
-//   const data = await getHealthAndCollateralData(userAddress);
+/**
+ * Retrieves health and collateral data for a user from Aave.
+ * @customfunction GET_AAVE_DATA
+ * @param userAddress Ethereum address of the user.
+ * @returns A 2D array containing headings and values.
+ */
+export async function getAaveData(userAddress: string) {
+  const data = await getHealthAndCollateralData(userAddress);
 
-//   const result = [
-//     ["totalCollateralETH", data.totalCollateralETH.toString()],
-//     ["totalDebtBase", data.totalDebtBase.toString()],
-//     ["availableBorrowsBase", data.availableBorrowsBase.toString()],
-//     ["currentLiquidationThreshold", data.currentLiquidationThreshold.toString()],
-//     ["ltv", data.ltv.toString()],
-//     ["healthFactor", data.healthFactor.toString()]
-//   ];
+  const result = [
+    ["totalCollateralETH", data.totalCollateralETH.toString()],
+    ["totalDebtBase", data.totalDebtBase.toString()],
+    ["availableBorrowsBase", data.availableBorrowsBase.toString()],
+    ["currentLiquidationThreshold", data.currentLiquidationThreshold.toString()],
+    ["ltv", data.ltv.toString()],
+    ["healthFactor", data.healthFactor.toString()]
+  ];
 
-//   return result;
-// }
+  return result;
+}

@@ -158,6 +158,19 @@
                 }
             ],
             "result": {}
+        },
+        {
+            "description": "Retrieves health and collateral data for a user from Aave.",
+            "id": "GET_AAVE_DATA",
+            "name": "GET_AAVE_DATA",
+            "parameters": [
+                {
+                    "description": "Ethereum address of the user.",
+                    "name": "userAddress",
+                    "type": "string"
+                }
+            ],
+            "result": {}
         }
     ]
 }
