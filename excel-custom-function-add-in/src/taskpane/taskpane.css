@@ -152,7 +152,7 @@ hr.content-divider {
 }
 
 #parallax-2 {
-  background: url(https://source.unsplash.com/featured/?dark-academia);
+  background: url(https://source.unsplash.com/featured/?dark%5Dnight);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -165,7 +165,7 @@ hr.content-divider {
 }
 
 #parallax-3 {
-  background: url(https://source.unsplash.com/featured/?city);
+  background: url(https://source.unsplash.com/featured/?night-city);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;

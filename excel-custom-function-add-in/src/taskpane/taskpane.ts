@@ -15,8 +15,8 @@ Office.initialize = () => {
   document.getElementById("show-address").style.visibility = "hidden";
   // document.getElementById("parallax-1").style.visibility = "hidden";
   // document.getElementById("parallax-2").style.visibility = "hidden";
-  document.getElementById("parallax-1").style.display = "none";
-  document.getElementById("parallax-2").style.display = "none";
+  // document.getElementById("parallax-1").style.display = "none";
+  // document.getElementById("parallax-2").style.display = "none";
   document.getElementById("connect-wallet").onclick = connectMetaMask;
 };
 
@@ -30,8 +30,8 @@ async function connectMetaMask() {
       console.log("Connected account:", address);
       document.getElementById("main-page-div").style.display = "none";
       document.getElementById("show-address").style.visibility = "visible";
-      document.getElementById("parallax-1").style.display = "block";
-      document.getElementById("parallax-2").style.display = "block";
+      // document.getElementById("parallax-1").style.display = "block";
+      // document.getElementById("parallax-2").style.display = "block";
 
       getBalance();
     } catch (error) {
