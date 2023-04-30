@@ -3,99 +3,186 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contoso Task Pane Add-in</title>
 
-    <!-- Office JavaScript API -->
-    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contoso Task Pane Add-in</title>
 
-    <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
-    <link
-      rel="stylesheet"
-      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"
-    />
-    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.components.min.css" />
+  <!-- Office JavaScript API -->
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+  <!-- <script type="module" src="https://unpkg.com/@fluentui/web-components"></script> -->
+  <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
+  <link rel="stylesheet"
+    href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css" />
+  <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.components.min.css" />
+  <!-- Latest compiled and minified CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/15181efa86.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+  <!-- Template styles -->
+  <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
 
-    <!-- Template styles -->
-    <link href="taskpane.css" rel="stylesheet" type="text/css" />
-  </head>
+<!-- This is our main body class, it will have a header and a Main section. -->
 
-  <!-- This is our main body class, it will have a header and a Main section. -->
+<body>
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand has-text-centered">
+      <!-- <figure class="image is-3by1"> -->
+      <img src="../../assets/Yeager-logos_white.png" height="40" width="80">
+      <!-- </figure> -->
+    </div>
 
-  <body class="ms-font-m ms-welcome ms-Fabric">
-    <!-- Here is the header it contains an image <img> and header text <h1>. -->
-    <header class="ms-welcome__header ms-bgColor-neutralDark">
-      <img
-        width="90"
-        height="90"
-        src="../../assets/sigma-filled.png"
-        alt="The Sigma Coding icon logo."
-        title="Sigma Coding"
-      />
-      <h1 class="ms-font-su">Yeager AddIn</h1>
-    </header>
 
-    <!-- This will only be seen if our Add-In didn't load correctly. -->
-    <section id="sideload-msg" class="ms-welcome__main">
-      <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
-    </section>
+  </nav>
+  <!-- <header class="ms-welcome__header">
+    <img width="50" height="50" src="../../assets/sigma-filled.png" alt="The Sigma Coding icon logo."
+      title="Sigma Coding" />
+    <h1 class="ms-font-su">Yeager AddIn</h1>
+  </header>
 
-    <!-- 
-        This is the main body, so every thing below our header.
-        Note the `class` attribute, and `id`.
-    -->
-    <main id="app-body" class="ms-welcome__main" style="display: none;">
-      <!-- 
-            When organizing my structure I like to follow a grid layout.
-            Where a grid is made up of individual rows, and the rows made
-            up of individual columns.
-
-            The first line after this comment specifies our <div> will be
-            a class of `ms-grid` and has a direction of left to right `ltr`.
-        -->
-      <div class="ms-Grid" dir="ltr">
-        <div class="ms-Grid-row" id="grid_overview_header_row">
-          <div class="ms-Grid-col ms-sm12 ms-md12 ms-lg12">
-            <h3 id="overview_header">Overview</h3>
+  <section id="sideload-msg" class="ms-welcome__main">
+    <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
+  </section> -->
+  <section class="cta va">
+    <div class="hero-body">
+      <div class="container">
+        <div id="main-page-div">
+          <h2 class="subtitle  has-text-centered">A simple boilerplate for setting up <br> Metamask using the Office
+            plugins.</h2>
+          <div class="control has-text-centered" id="connect-wallet-div">
+            <button id="connect-wallet" class="button is-white is-rounded is-outlined">Connect Wallet</button>
           </div>
         </div>
-
-        <!-- A grid has rows, this is the first row of our grid. -->
-        <div class="ms-Grid-row">
-          <!-- 
-                    A row is made up individual columns `ms-Grid-col`. A few things 
-                    to note here, each column can dynamically size depending on the 
-                    screen they are displayed in. That's why you see the following:
-
-                    1. ms-sm6 = For the "small view", set it to a length of 6.
-                    2. ms-md4 = For the "medium view", set it to a length of 4.
-                    3. ms-lg2 = For the "large view", set it to a length of 2.
-
-                    Additionally, notice that if you go down vertically through each
-                    column that the sum of each column, for any given size, always equals
-                    12. IT ALWAYS HAS TO EQUAL 12.
-
-                -->
-          <div class="ms-Grid-col ms-sm12 ms-md12 ms-lg12" id="grid-welcome-column">
-            <p class="ms-fontColor-themeNeutral">
-              Yeager, enables you to manange your DeFi positions and simulate strategies. It's a powerful tool that can
-              be used to help you make better decisions.
-            </p>
-          </div>
+        <div class="container has-text-centered" id="show-address">
+          <!-- <img src="../../assets/Yeager-logos_white.png" width="150" height="40"> -->
+          <h2 class="subtitle">
+            <span id="address-balance" class="tag is-primary is-size-1"></span>
+          </h2>
+          <h2 class="is-size-3 has-text-white">BALANCE</h1>
         </div>
 
-       
 
-        
+        <!-- <footer class="card-footer">
+              <p class="card-footer-item">
+                <button  class="button is-white is-rounded is-outlined">Swap</button>
+              </p>
+            </footer> -->
+      </div>
+    </div>
+    </div>
+  </section>
+  <section id="parallax-1" class="hero is-large ">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-multiline is-mobile">
+          <div class="column is-half">
+            <h2 class="is-size-3 has-text-white">UNISWAP</h1>
+          </div>
+          <div class="column is-half has-text-centered">
+            <img src="../../assets/uniswap-uni-logo.png" height="40" width="40">
+          </div>
+        </div>
+        <form>
+          <div class="field is-horizontal">
+            <div class="field-body">
+              <div class="field">
+                <p class="control has-icons-left">
+                  <input class="input" type="text" placeholder="Transfer Token Address">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-solid fa-address-book"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                  <input class="input" type="text" placeholder="Transfer Token Amount">
+                  <span class="icon is-small is-left">
+                    <!-- <i class="fas fa-envelope"></i> -->
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control has-icons-left">
+                  <input class="input" type="text" placeholder="Receiving Token Address">
+                  <span class="icon is-small is-left">
+                    <!-- <i class="fas fa-user"></i> -->
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                  <input class="input" type="text" placeholder="Receiving Token Minimum Amount">
+                  <span class="icon is-small is-left">
+                    <!-- <i class="fas fa-envelope"></i> -->
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
 
-      <!-- <h2 class="ms-font-xl"> Discover what Office Add-ins can do for you today! </h2> -->
+          <div class="field is-horizontal has-text-centered">
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <button id="swap-button" class="button is-primary">
+                    Swap
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <section id="parallax-2" class="hero is-large ">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-multiline is-mobile">
+          <div class="column is-half">
+            <h2 class="is-size-3 has-text-white">AAVE</h1>
+          </div>
+          <div class="column is-half has-text-centered">
+            <img src="../../assets/aave-aave-logo.png" height="40" width="40">
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-6">
+            <h1 class="title is-1 ">Lending</h1>
+            <hr class="content-divider">
 
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Yeager</strong> by <a href="https://jgthms.com">Ankur, Justin and Generalist</a>. The source code is
+        licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- <main id="app-body" class="ms-welcome__main" style="display: none;">
+    <div class="ms-Grid" dir="ltr">
       <div role="button" id="connect-wallet" class="ms-welcome__action ms-Button ms-Button--hero ms-font-xl">
         <span class="ms-Button-label">Connect Wallet</span>
       </div>
-    </main>
-  </body>
+
+      <div class="ms-Grid-row">
+        <span id="address-balance" class="ms-font-xl ms-fontColor-themePrimary"></span>
+      </div>
+
+      <div class="ms-Grid-row">
+      </div>
+  </main> -->
+</body>
+
+
 </html>
