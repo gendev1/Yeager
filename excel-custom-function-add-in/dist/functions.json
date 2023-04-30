@@ -111,7 +111,9 @@
                     "type": "any"
                 }
             ],
-            "result": {}
+            "result": {
+                "type": "number"
+            }
         },
         {
             "description": "Approve a erc20 token",
@@ -170,7 +172,9 @@
                     "type": "string"
                 }
             ],
-            "result": {}
+            "result": {
+                "type": "string"
+            }
         }
     ]
 }

@@ -31926,7 +31926,7 @@ function getAaveData(userAddress) {
 
         case 1:
           data = _a.sent();
-          result = [["totalCollateralETH", data.totalCollateralETH.toString()], ["totalDebtBase", data.totalDebtBase.toString()], ["availableBorrowsBase", data.availableBorrowsBase.toString()], ["currentLiquidationThreshold", data.currentLiquidationThreshold.toString()], ["ltv", data.ltv.toString()], ["healthFactor", data.healthFactor.toString()]];
+          result = "totalCollateralETH," + (data.totalCollateralETH || 0).toString() + "\n\n  totalDebtBase," + (data.totalDebtBase || 0).toString() + "\n\n  availableBorrowsBase," + (data.availableBorrowsBase || 0).toString() + "\n\n  currentLiquidationThreshold," + (data.currentLiquidationThreshold || 0).toString() + "\n\n  ltv," + (data.ltv || 0).toString() + "\n\n  healthFactor," + (data.healthFactor || 0).toString() + "\n";
           return [2
           /*return*/
           , result];

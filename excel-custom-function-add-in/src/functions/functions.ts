@@ -139,7 +139,7 @@ export async function connectToMetaMask() {
  * @param tknAddr address of the token
  * @returns number of tokens
  */
-export async function getERC20Balance(tknAddr) {
+export async function getERC20Balance(tknAddr): Promise<number> {
   if (typeof signer === "undefined") {
     connectToMetaMask();
     // throw new Error("Please connect to MetaMask first.");
@@ -222,17 +222,16 @@ async function getHealthAndCollateralData(aaveContractAddress: string) {
  * @param userAddress Ethereum address of the user.
  * @returns A 2D array containing headings and values.
  */
-export async function getAaveData(userAddress: string) {
+export async function getAaveData(userAddress: string): Promise<string> {
   const data = await getHealthAndCollateralData(userAddress);
 
-  const result = [
-    ["totalCollateralETH", data.totalCollateralETH.toString()],
-    ["totalDebtBase", data.totalDebtBase.toString()],
-    ["availableBorrowsBase", data.availableBorrowsBase.toString()],
-    ["currentLiquidationThreshold", data.currentLiquidationThreshold.toString()],
-    ["ltv", data.ltv.toString()],
-    ["healthFactor", data.healthFactor.toString()]
-  ];
+  // convert data into a csv string
+  const result = `totalCollateralETH,${(data.totalCollateralETH || 0).toString()}\n
+  totalDebtBase,${(data.totalDebtBase || 0).toString()}\n
+  availableBorrowsBase,${(data.availableBorrowsBase || 0).toString()}\n
+  currentLiquidationThreshold,${(data.currentLiquidationThreshold || 0).toString()}\n
+  ltv,${(data.ltv || 0).toString()}\n
+  healthFactor,${(data.healthFactor || 0).toString()}\n`;
 
   return result;
 }

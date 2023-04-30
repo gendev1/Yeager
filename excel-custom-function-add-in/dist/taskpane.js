@@ -31390,145 +31390,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./src/taskpane/constants.js":
-/*!***********************************!*\
-  !*** ./src/taskpane/constants.js ***!
-  \***********************************/
-/*! exports provided: contractAddress, abi */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "contractAddress", function() { return contractAddress; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "abi", function() { return abi; });
-const contractAddress = "0x87D29af343dBa7c8AAAD4F53fC2a17B52b1895ca"
-const abi = [
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "priceFeed",
-        type: "address",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
-    inputs: [],
-    name: "MINIMUM_USD",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "cheaperWithdraw",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "fund",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "fundingAddress",
-        type: "address",
-      },
-    ],
-    name: "getAddressToAmountFunded",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "index",
-        type: "uint256",
-      },
-    ],
-    name: "getFunder",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getOwner",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getPriceFeed",
-    outputs: [
-      {
-        internalType: "contract AggregatorV3Interface",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getVersion",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "withdraw",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function",
-  },
-]
-
-/***/ }),
-
 /***/ "./src/taskpane/taskpane.ts":
 /*!**********************************!*\
   !*** ./src/taskpane/taskpane.ts ***!
@@ -31690,9 +31551,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var ethers_1 = __webpack_require__(/*! ethers */ "./node_modules/ethers/lib.esm/index.js");
-
-var constants_js_1 = __webpack_require__(/*! ./constants.js */ "./src/taskpane/constants.js"); // The initialize function must be run each time a new page is loaded
+var ethers_1 = __webpack_require__(/*! ethers */ "./node_modules/ethers/lib.esm/index.js"); // The initialize function must be run each time a new page is loaded
 
 
 Office.initialize = function () {
@@ -31701,9 +31560,9 @@ Office.initialize = function () {
   // // document.getElementById("run").onclick = run;
   document.getElementById("show-address").style.visibility = "hidden"; // document.getElementById("parallax-1").style.visibility = "hidden";
   // document.getElementById("parallax-2").style.visibility = "hidden";
+  // document.getElementById("parallax-1").style.display = "none";
+  // document.getElementById("parallax-2").style.display = "none";
 
-  document.getElementById("parallax-1").style.display = "none";
-  document.getElementById("parallax-2").style.display = "none";
   document.getElementById("connect-wallet").onclick = connectMetaMask;
 };
 
@@ -31740,9 +31599,9 @@ function connectMetaMask() {
           address = _a.sent();
           console.log("Connected account:", address);
           document.getElementById("main-page-div").style.display = "none";
-          document.getElementById("show-address").style.visibility = "visible";
-          document.getElementById("parallax-1").style.display = "block";
-          document.getElementById("parallax-2").style.display = "block";
+          document.getElementById("show-address").style.visibility = "visible"; // document.getElementById("parallax-1").style.display = "block";
+          // document.getElementById("parallax-2").style.display = "block";
+
           getBalance();
           return [3
           /*break*/
@@ -31775,44 +31634,51 @@ function connectMetaMask() {
 
 function getBalance() {
   return __awaiter(this, void 0, void 0, function () {
-    var provider, balance, error_2;
+    var provider, signer, address, balance, error_2;
     return __generator(this, function (_a) {
       switch (_a.label) {
         case 0:
           if (!(typeof window.ethereum !== "undefined")) return [3
           /*break*/
-          , 5];
+          , 6];
           provider = new ethers_1.ethers.providers.Web3Provider(window.ethereum);
           _a.label = 1;
 
         case 1:
-          _a.trys.push([1, 3,, 4]);
+          _a.trys.push([1, 4,, 5]);
 
+          signer = provider.getSigner();
           return [4
           /*yield*/
-          , provider.getBalance(constants_js_1.contractAddress)];
+          , signer.getAddress()];
 
         case 2:
+          address = _a.sent();
+          return [4
+          /*yield*/
+          , provider.getBalance(address)];
+
+        case 3:
           balance = _a.sent();
           document.getElementById("address-balance").innerHTML = ethers_1.ethers.utils.formatEther(balance) + " ETH";
           console.log(ethers_1.ethers.utils.formatEther("Balance: " + balance));
           return [3
           /*break*/
-          , 4];
-
-        case 3:
-          error_2 = _a.sent();
-          console.log(error_2);
-          return [3
-          /*break*/
-          , 4];
+          , 5];
 
         case 4:
+          error_2 = _a.sent();
+          console.log(error_2);
           return [3
           /*break*/
           , 5];
 
         case 5:
+          return [3
+          /*break*/
+          , 6];
+
+        case 6:
           return [2
           /*return*/
           ];
