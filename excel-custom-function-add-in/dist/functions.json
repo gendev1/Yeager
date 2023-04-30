@@ -87,23 +87,77 @@
             "parameters": [
                 {
                     "description": "String to write.",
-                    "name": "walletAddress",
-                    "type": "string"
-                },
-                {
-                    "description": "String to write.",
-                    "name": "chainId",
-                    "type": "string"
-                },
-                {
-                    "description": "String to write.",
-                    "name": "apiKey",
-                    "type": "string"
+                    "name": "address",
+                    "type": "any"
                 }
             ],
-            "result": {
-                "type": "string"
-            }
+            "result": {}
+        },
+        {
+            "description": "Get balances of all tokens in a wallet. using covalent api",
+            "id": "CONNECTTOMETAMASKSS",
+            "name": "CONNECTTOMETAMASKSS",
+            "parameters": [],
+            "result": {}
+        },
+        {
+            "description": "Get Balance of a erc20 token",
+            "id": "GETERC20BALANCE",
+            "name": "GETERC20BALANCE",
+            "parameters": [
+                {
+                    "description": "address of the token",
+                    "name": "tknAddr",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Approve a erc20 token",
+            "id": "APPROVEERC20",
+            "name": "APPROVEERC20",
+            "parameters": [
+                {
+                    "description": "address of the token",
+                    "name": "tknAddr",
+                    "type": "any"
+                },
+                {
+                    "description": "address of the spender",
+                    "name": "spender",
+                    "type": "any"
+                },
+                {
+                    "description": "amount to approve",
+                    "name": "amount",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Transfer a erc20 token",
+            "id": "TRANSFERERC20",
+            "name": "TRANSFERERC20",
+            "parameters": [
+                {
+                    "description": "address of the token",
+                    "name": "tknAddr",
+                    "type": "any"
+                },
+                {
+                    "description": "address of the receiver",
+                    "name": "to",
+                    "type": "any"
+                },
+                {
+                    "description": "amount to transfer",
+                    "name": "amount",
+                    "type": "any"
+                }
+            ],
+            "result": {}
         }
     ]
 }
